@@ -1,0 +1,50 @@
+{
+  "name": "phenixvid",
+  "version": "0.0.1",
+  "description": "",
+  "backend": "backend/server/index.js",
+  "frontend": "frontend/server/index.js",
+  "scripts": {
+    "dev_b": "nodemon backend/server/index.js",
+    "dev_f": "nodemon frontend/server/index.js",
+    "pm2_dev_b": "pm2 start backend/server/index.js --name PhenixVid_backend --watch",
+    "pm2_dev_f": "pm2 start frontend/server/index.js --name PhenixVid_frontend --watch ",
+    "dev": "npm run pm2_dev_b && npm run pm2_dev_f && pm2 logs",
+    "dev_restat": "npm run dev_kill && npm run dev",
+    "dev_kill": "pm2 delete PhenixVid_backend && pm2 delete PhenixVid_frontend"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ]
+  },
+  "ignore_watch": ["node_modules", "*.json"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhenixGames/PhenixVid.git"
+  },
+  "author": "PhenixGames",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhenixGames/PhenixVid/issues"
+  },
+  "homepage": "https://github.com/PhenixGames/PhenixVid#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "nconf": "^0.12.0",
+    "uuid": "^8.3.2",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
