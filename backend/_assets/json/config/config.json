@@ -1,0 +1,16 @@
+{
+    "mode": "development",
+    "server": "backend",
+
+    "routes": {
+        "main": {
+            "name": "main",
+            "path": "/"
+        },
+        "getUser": {
+            "name": "getUser",
+            "path": "/user/:id",
+            "method": "GET"
+        }
+    }
+}

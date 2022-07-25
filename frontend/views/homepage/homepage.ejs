@@ -1,0 +1,11 @@
+<h1>Hallo</h1>
+
+<script>
+    axios.get('/api/v1/users')
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+</script>

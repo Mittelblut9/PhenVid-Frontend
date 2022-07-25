@@ -1,0 +1,11 @@
+{
+    "mode": "development",
+    "server": "frontend",
+    "routes": {
+        "homepage": {
+            "name": "homepage",
+            "path": "/",
+            "requireLoggedIn": false
+        }
+    }
+}
