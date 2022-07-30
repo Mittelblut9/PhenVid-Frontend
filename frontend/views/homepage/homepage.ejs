@@ -1,11 +1,33 @@
-<h1>Hallo</h1>
+<head>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
 
-<script>
-    axios.get('/api/v1/users')
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-</script>
+<body>
+    <h1>LOGIN</h1>
+    <div id="g_id_signin"></div>
+    <script>
+
+        function handleCredentialResponse(res) {
+            const credential = res.credential;
+            
+
+            const xhr = new XMLHttpRequest()
+            xhr.open("GET", "http://localhost:8080/getUser/"+credential)
+            xhr.send()
+        }
+
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: '141890256978-303jipsip2jip00jonfn5lpnad8m0o08.apps.googleusercontent.com',
+                callback: handleCredentialResponse
+            });
+
+            google.accounts.id.renderButton(
+                document.getElementById('g_id_signin'),
+                {theme: "outline", size: "medium"}
+            )
+        };
+    </script>
+</body>
+
+</html>
