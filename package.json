@@ -39,7 +39,7 @@
     "uuid": "^8.3.2",
     "validator": "^13.7.0",
     "vue": "^3.2.13",
-    "vue-meta": "^3.0.0-alpha.2"
+    "vue-meta": "^3.0.0-alpha.10"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
