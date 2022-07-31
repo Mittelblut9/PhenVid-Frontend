@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { CreateScriptHtml } from '../../functions/createScriptsHtml/createScriptHtml';
+import { CreateScriptHtml } from '../../class/createScriptsHtml/createScriptHtml';
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
@@ -28,7 +28,7 @@ export default {
         window.onload = function () {
             // eslint-disable-next-line no-undef
             google.accounts.id.initialize({
-                client_id: '141890256978-303jipsip2jip00jonfn5lpnad8m0o08.apps.googleusercontent.com',
+                client_id: import.meta.env.VUE_APP_GOOGLE_CLIENTID,
                 callback: handleCredentialResponse
             });
 
@@ -37,8 +37,7 @@ export default {
                 document.getElementById('g_id_signin'), {
                 theme: "outline",
                 size: "medium"
-            }
-            )
+            })
         };
     },
 }
