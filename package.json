@@ -41,7 +41,7 @@
     "vue": "^3.2.13"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/core": "^7.18.10",
     "@babel/eslint-parser": "^7.12.16",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/cli-plugin-babel": "~5.0.0",
