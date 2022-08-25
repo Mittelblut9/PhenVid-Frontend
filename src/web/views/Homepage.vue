@@ -1,14 +1,14 @@
 <template>
-    <Header />
+    <PGVHeader />
     <h1>Homepage</h1>
 </template>
 
 <script>
-import Header from '../components/utils/Header-comp.vue'
+import PGVHeader from '../components/utils/Header-comp.vue'
 export default {
     name: "PhenixVidHomepage",
     components: {
-        Header
+        PGVHeader
     },
 }
 </script>

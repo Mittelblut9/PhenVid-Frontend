@@ -1,5 +1,23 @@
-export default {
-    frontent_url: `${process.env.VUE_APP_PROTOCOL}://${process.env.VUE_APP_DOMAIN}${(process.env.PRODUCTION) ? '' : process.env.VUE_APP_PORT}`,
-    backend_url: `${process.env.VUE_APP_PROTOCOL}://${process.env.VUE_APP_DOMAIN}${(process.env.PRODUCTION) ? '' : process.env.VUE_APP_PORT}`,
-    apiUrl: this.backend_url + `/api`
+console.log(import.meta.env)
+const config = {
+    frontent_url: `${import.meta.env.VUE_APP_PROTOCOL}://${import.meta.env.VUE_APP_DOMAIN}${(import.meta.env.PRODUCTION) ? '' : import.meta.env.VUE_APP_PORT}`,
+    backend_url: `${import.meta.env.VUE_APP_PROTOCOL}://${import.meta.env.VUE_APP_DOMAIN}${(import.meta.env.PRODUCTION) ? '' : import.meta.env.VUE_APP_PORT}`,
+    apiUrl: `/api`,
+
+    routes: [{
+            name: "homepage",
+            path: "/",
+            component: () => import('../../web/views/Homepage.vue'),
+            requireLogin: false
+        },
+        {
+            name: "login",
+            path: "/login",
+            component: () => import('../../web/views/Homepage.vue'),
+            requireLogin: false
+        },
+
+    ],
 }
+
+export default config;

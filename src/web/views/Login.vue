@@ -18,8 +18,6 @@ export default {
         })
         function handleCredentialResponse(res) {
             const credential = res.credential;
-
-
             const xhr = new XMLHttpRequest()
             xhr.open("GET", "http://localhost:8080/getUser/" + credential)
             xhr.send()
