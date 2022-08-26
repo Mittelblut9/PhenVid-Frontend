@@ -1,0 +1,28 @@
+@import url('fonts.css');
+@import url('root.css');
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--main_backround);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#app {
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

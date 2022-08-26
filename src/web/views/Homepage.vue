@@ -1,6 +1,5 @@
 <template>
-    <PGVHeader />
-    <h1>Homepage</h1>
+    <PGVHeader :username="username" :email="email" :isLoggedIn="isLoggedIn"/>
 </template>
 
 <script>
@@ -9,6 +8,21 @@ export default {
     name: "PhenixVidHomepage",
     components: {
         PGVHeader
+    },
+    probs: {
+        username: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+        },
+        isLoggedIn: {
+            type: Boolean,
+            required: true,
+            default: true
+        }
     },
 }
 </script>

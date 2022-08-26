@@ -1,0 +1,25 @@
+#pgv_header {
+    height: 8vh;
+    width: 100vw;
+    background: red;
+}
+
+.pg_logo {
+    padding: 20px 10px 10px 30px;
+}
+
+.pg_logo img {
+    width: 40px;
+}
+
+.profile {
+    margin: 17px;
+}
+
+.profile p {
+    margin: 0;
+}
+
+.profile .name {
+    text-align: center;
+}
