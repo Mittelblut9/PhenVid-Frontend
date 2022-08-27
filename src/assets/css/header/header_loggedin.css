@@ -1,0 +1,27 @@
+.profile .profile_loggedin .profile_emoji {
+    margin: 0 5px 0 0;
+}
+
+
+.profile .name {
+    text-align: center;
+    transform: translateX(-30px);
+}
+
+.profile .email {
+    font-size: 0.6rem;
+}
+
+.profile .email span {
+    text-align: right;
+    text-overflow: ellipsis;
+}
+
+
+.profile_loggedin .name,
+.profile_loggedin .email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 190px;
+}

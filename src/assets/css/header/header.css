@@ -1,7 +1,7 @@
 #pgv_header {
     height: 8vh;
     width: 100vw;
-    background: red;
+    background: rgb(54, 54, 54);
 }
 
 .pg_logo {
@@ -14,12 +14,14 @@
 
 .profile {
     margin: 17px;
+    width: 230px;
+    font-weight: 600;
 }
 
 .profile p {
     margin: 0;
 }
 
-.profile .name {
-    text-align: center;
+.profile .profile_picture img {
+    border-radius: 50px;
 }

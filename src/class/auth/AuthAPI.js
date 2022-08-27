@@ -26,7 +26,7 @@ class Auth {
 
     async getUserByToken() {
         const RESTcall = config.backend_url + config.apiUrl + '/users/' + this.#token;
-
+        console.log(RESTcall)
         try {
             const res = await axios.get(RESTcall);
             return {
@@ -37,7 +37,8 @@ class Auth {
         } catch (err) {
             return {
                 err: true,
-                code: err.code,
+                fullError: err,
+                code: err.response.status,
                 message: err.message
             };
         }
@@ -65,7 +66,7 @@ class Auth {
         } catch (err) {
             return {
                 err: true,
-                code: err.code,
+                code: err.response.status,
                 message: err.message
             };
         }

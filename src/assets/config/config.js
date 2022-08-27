@@ -1,6 +1,6 @@
 const config = {
-    frontent_url: `${import.meta.env.VUE_APP_PROTOCOL}://${import.meta.env.VUE_APP_DOMAIN}${(import.meta.env.PRODUCTION) ? '' : import.meta.env.VUE_APP_PORT}`,
-    backend_url: `${import.meta.env.VUE_APP_PROTOCOL}://${import.meta.env.VUE_APP_DOMAIN}${(import.meta.env.PRODUCTION) ? '' : import.meta.env.VUE_APP_PORT}`,
+    frontent_url: `${import.meta.env.VITE_APP_PROTOCOL}${import.meta.env.VITE_APP_DOMAIN}${(import.meta.env.PRODUCTION) ? '' : ':'+import.meta.env.VITE_APP_PORT}`,
+    backend_url: `${import.meta.env.VITE_APP_PROTOCOL}${import.meta.env.VITE_APP_DOMAIN}${(import.meta.env.PRODUCTION) ? '' : ':'+import.meta.env.VITE_APP_PORT}`,
     apiUrl: `/api`,
 
     routes: [{

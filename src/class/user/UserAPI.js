@@ -5,8 +5,10 @@ class UserApi extends Auth {
         super();
     }
     async getUser() {
-        const response = await this.getUserByToken();
-        return response;
+        return await new Promise((resolve) => {
+            const response = this.getUserByToken();
+            return resolve(response);
+        })
     }
 }
 

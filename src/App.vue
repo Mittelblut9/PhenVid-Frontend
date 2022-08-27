@@ -10,8 +10,16 @@ export default {
   data: () => {
     return {
       isLoggedIn: true,
-      username: "Max Verstappen",
+      username: "Felix von der Laden",
       email: "example@example.com"
+    }
+  },
+  mounted() {
+    //Prevent image drag if the dataset "canbedrag" is not true
+    window.ondragstart = function(e) {
+      if(e.target.dataset.canbedrag != 'true') {
+        return false;
+      }
     }
   },
   components: {
