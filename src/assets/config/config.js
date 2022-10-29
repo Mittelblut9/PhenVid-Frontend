@@ -19,7 +19,7 @@ const config = {
             path: '/register',
             component: () => import(/* @vite-ignore */ `${viewsFolder}/Register.vue`),
             requireLogin: false,
-        }, 
+        },
         {
             name: 'profile',
             path: '/profile',
@@ -37,7 +37,7 @@ const config = {
             path: '/:pathMatch(.*)*',
             component: () => import(/* @vite-ignore */ `${viewsFolder}/System/404.vue`),
             requireLogin: false,
-        }
+        },
     ],
 };
 

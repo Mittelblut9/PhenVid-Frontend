@@ -1,5 +1,4 @@
 <template>
-
     <div class="register">
         <div class="register__container">
             <div class="register__container__header">
@@ -10,19 +9,28 @@
                 <form action="" method="post" @submit.prevent="registerUser()">
                     <div class="register__containter__body__form__input">
                         <label for="username">Username</label>
-                        <input type="username" placeholder="Enter your username" v-model="username"/>
+                        <input
+                            type="username"
+                            placeholder="Enter your username"
+                            v-model="username" />
                     </div>
                     <div class="register__containter__body__form__input">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="Enter your email" v-model.trim="email"/>
+                        <input type="email" placeholder="Enter your email" v-model.trim="email" />
                     </div>
                     <div class="register__containter__body__form__input">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="Enter your password" v-model.trim="password"/>
+                        <input
+                            type="password"
+                            placeholder="Enter your password"
+                            v-model.trim="password" />
                     </div>
                     <div class="register__containter__body__form__input">
                         <label for="password2">Confirm Password</label>
-                        <input type="password" placeholder="Confirm your password" v-model.trim="passwordRepeated"/>
+                        <input
+                            type="password"
+                            placeholder="Confirm your password"
+                            v-model.trim="passwordRepeated" />
                     </div>
                     <div class="register__containter__body__form__input">
                         <input type="submit" value="Register" />
@@ -31,7 +39,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -51,7 +58,7 @@ export default {
 
     methods: {
         registerUser() {
-            if(!this.isPasswordEqual()) {
+            if (!this.isPasswordEqual()) {
                 return alert('Passwords are not equal');
             }
 
@@ -59,7 +66,7 @@ export default {
             this.email = Validation.validateEmail(this.email);
             this.password = Validation.validatePassword(this.password);
 
-            switch(true) {
+            switch (true) {
                 case !this.username:
                     return alert('Username is not valid');
                 case !this.email:
@@ -77,11 +84,10 @@ export default {
             const newRequest = new SignIn(user);
 
             //TODO
-
         },
         isPasswordEqual() {
             return this.password === this.passwordRepeated;
-        }
+        },
     },
 };
 </script>

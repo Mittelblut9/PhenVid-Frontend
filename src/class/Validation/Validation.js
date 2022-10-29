@@ -9,12 +9,12 @@ class Validation {
 
     // Validate password
     validatePassword(password) {
-        return (password.length > 6) ? password : false;
+        return password.length > 6 ? password : false;
     }
 
     // Validate username
     validateUsername(username) {
-        return (username.length > 2) ? username : false;
+        return username.length > 2 ? username : false;
     }
 }
 

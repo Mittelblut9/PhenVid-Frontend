@@ -84,7 +84,6 @@ class Rest {
             }
         });
     }
-        
 }
 
 export default Rest;

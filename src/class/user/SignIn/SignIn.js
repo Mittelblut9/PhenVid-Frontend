@@ -12,10 +12,7 @@ class SignIn {
     }
 
     #validateCredentials() {
-        if (
-            !this.data.email ||
-            !this.data.password 
-        ) {
+        if (!this.data.email || !this.data.password) {
             return {
                 error: true,
                 code: 403,

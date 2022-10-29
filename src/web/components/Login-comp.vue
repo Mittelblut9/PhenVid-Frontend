@@ -9,11 +9,19 @@
                 <form action="" method="post">
                     <div class="login__container__form__input">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Enter your email" />
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Enter your email" />
                     </div>
                     <div class="login__container__form__input">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Enter your password" />
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Enter your password" />
                     </div>
                     <div class="login__container__form__input">
                         <input type="submit" value="Login" />
@@ -21,12 +29,12 @@
                 </form>
             </div>
             <div class="login__container__footer">
-                <p class="login__container__footer__text">Don't have an account? <a href="/register">Register</a></p>
+                <p class="login__container__footer__text">
+                    Don't have an account? <a href="/register">Register</a>
+                </p>
             </div>
         </div>
     </div>
-
-
 </template>
 
 <script>
