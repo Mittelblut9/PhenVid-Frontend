@@ -1,12 +1,12 @@
 import Auth from '../auth/AuthAPI';
-import axios from 'axios';
-import config from '../../assets/config/config';
 import Errormessage from '../Error/Errormessage';
+import Rest from '../REST/Rest';
 
 class User extends Auth {
     constructor() {
         super();
     }
+
     async get() {
         return await new Promise((resolve) => {
             const response = this.getUserByToken();
@@ -15,18 +15,20 @@ class User extends Auth {
     }
 
     async getUserByToken() {
-        const RESTcall = config.backend_url + config.apiUrl + '/user';
-        try {
-            const response = await axios.get(RESTcall, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + this.getToken(),
-                },
+        const url = '/user';
+        const headers = {
+            Authorization: `Bearer ${this.getToken()}`,
+        };
+
+        const response = Rest.get({ url, headers });
+
+        await Promise.resolve(response)
+            .then((response) => {
+                return Errormessage.restResponse({ response });
+            })
+            .catch((err) => {
+                return Errormessage.restResponse({ err });
             });
-            return Errormessage.restResponse({ response });
-        } catch (err) {
-            return Errormessage.restResponse({ err });
-        }
     }
 }
 

@@ -17,38 +17,27 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-    let ping = await Promise.resolve(new Mantain().ping());
-    if (ping.err) {
-        document.getElementById('app').remove();
+    const ping = await Promise.resolve(new Mantain().ping());
+    if (!ping) {
+        removeApp();
         return Errormessage.show(
             'Server request failed. Server is currently unavailable. Please try again later',
             true
         );
-    } else {
-        console.log('Ping resolved. ' + ping.ping + 'ms');
     }
-
-    const user = UserAPI.get();
-    const res = await Promise.resolve(user);
+    console.log('Ping resolved. ' + ping.ping + 'ms');
 
     const nextRoute = routes.find((route) => route.path == to.fullPath);
     const requireLogin = nextRoute.requireLogin;
 
-    if (!res.err) {
-        if (requireLogin && res.isLoggedIn) {
-            next();
-            return loadApp();
-        } else if (!requireLogin) {
-            next();
-            return loadApp();
-        } else {
-            next({
-                path: config.routes.find((r) => r.name == 'login').path,
-            });
-            return loadApp();
-        }
-    } else {
-        Errormessage.show('Request to the server failed. ' + res.message);
+    const user = await UserAPI.get();
+    const response = Promise.resolve(user);
+
+    if (response.err) {
+        Errormessage.show(
+            `Request to the server failed. ${response.message} with URL ${response.fullError.request.responseURL}`,
+            true
+        );
 
         if (to.fullPath == config.routes.find((r) => r.name == 'login').path) {
             next();
@@ -60,9 +49,27 @@ router.beforeEach(async (to, from, next) => {
         }
     }
 
-    function loadApp() {
-        app.mount('#app');
+    if (requireLogin && response.isLoggedIn) {
+        next();
+        return loadApp();
     }
+    if (!requireLogin) {
+        next();
+        return loadApp();
+    }
+
+    next({
+        path: config.routes.find((r) => r.name == 'login').path,
+    });
+    return loadApp();
 });
+
+function loadApp() {
+    app.mount('#app');
+}
+
+function removeApp() {
+    app.unmount();
+}
 
 export default router;

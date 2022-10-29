@@ -1,11 +1,10 @@
-import Errormessage from '../Error/Errormessage';
 import Rest from '../REST/Rest';
 
 export default class Mantain {
     constructor() {}
 
     async ping() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             const url = '/ping';
             const headers = {
                 'Content-Type': 'application/json',
@@ -28,8 +27,8 @@ export default class Mantain {
                         ping: ping,
                     });
                 })
-                .catch((err) => {
-                    return reject(Errormessage.restResponse({ err }));
+                .catch(() => {
+                    return false;
                 });
         });
     }

@@ -14,7 +14,7 @@ class Rest {
         this.#frontendURL = `${import.meta.env.VITE_APP_PROTOCOL}${
             import.meta.env.VITE_APP_DOMAIN
         }${import.meta.env.PRODUCTION ? '' : ':' + import.meta.env.VITE_APP_PORT}`;
-        this.#apiUrl = `${import.meta.env.VITE_APP_API}`;
+        this.#apiUrl = import.meta.env.VITE_APP_API;
         this.#httpLimiter = axiosRateLimit(axios.create(), {
             maxRequests: 1,
             perMilliseconds: 1000,

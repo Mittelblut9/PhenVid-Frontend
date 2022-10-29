@@ -5,4 +5,13 @@ module.exports = {
             return args;
         });
     },
+    rules: [
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            options: {
+                hotReload: true,
+            },
+        },
+    ],
 };
