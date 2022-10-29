@@ -1,18 +1,18 @@
 const config = {
-    routes: [{
-            name: "homepage",
-            path: "/",
+    routes: [
+        {
+            name: 'homepage',
+            path: '/',
             component: () => import('../../web/views/Homepage.vue'),
-            requireLogin: false
+            requireLogin: false,
         },
         {
-            name: "login",
-            path: "/login",
+            name: 'login',
+            path: '/login',
             component: () => import('../../web/views/Homepage.vue'),
-            requireLogin: false
+            requireLogin: false,
         },
-
     ],
-}
+};
 
 export default config;

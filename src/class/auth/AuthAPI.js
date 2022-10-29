@@ -14,42 +14,44 @@ class Auth {
     }
 
     getToken() {
-        const token = "123" //localStorage.getItem('pgvLoginToken');
+        const token = '123'; //localStorage.getItem('pgvLoginToken');
 
         const isValid = this.validateToken();
 
         if (isValid) {
-            this.#token = token
+            this.#token = token;
             return this.#token;
         }
     }
-
-    
 
     async loginUser(data) {
         const RESTcall = config.backend_url + config.apiUrl + '/user/login';
 
         try {
-            const res = await axios.post(RESTcall, {
-                user_id: data.user_id,
-                user_name: data.user_name,
-                profile_picture: data.profile_picture,
-                email: data.email
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
+            const res = await axios.post(
+                RESTcall,
+                {
+                    user_id: data.user_id,
+                    user_name: data.user_name,
+                    profile_picture: data.profile_picture,
+                    email: data.email,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                 }
-            });
+            );
             return {
                 error: false,
                 code: res.code,
-                message: res.message
+                message: res.message,
             };
         } catch (err) {
             return {
                 err: true,
                 code: err.response.status,
-                message: err.message
+                message: err.message,
             };
         }
     }

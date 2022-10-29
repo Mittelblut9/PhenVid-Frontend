@@ -2,9 +2,7 @@ import Errormessage from '../Error/Errormessage';
 import Rest from '../REST/Rest';
 
 export default class Mantain {
-    constructor() {
-
-    }
+    constructor() {}
 
     async ping() {
         return new Promise((resolve, reject) => {
@@ -12,27 +10,27 @@ export default class Mantain {
             const headers = {
                 'Content-Type': 'application/json',
                 'Cache-Control': 'no-cache',
-                'Pragma': 'no-cache',
-                'Expires': '0',
-            }
+                Pragma: 'no-cache',
+                Expires: '0',
+            };
             const startedPing = new Date().getTime();
 
             const response = Rest.get({
                 url,
-                headers
+                headers,
             });
 
-            Promise.resolve(response).then(() => {
-                const endedPing = new Date().getTime();
-                const ping = endedPing - startedPing;
-                return resolve({
-                    ping: ping
+            Promise.resolve(response)
+                .then(() => {
+                    const endedPing = new Date().getTime();
+                    const ping = endedPing - startedPing;
+                    return resolve({
+                        ping: ping,
+                    });
+                })
+                .catch((err) => {
+                    return reject(Errormessage.restResponse({ err }));
                 });
-            }).catch(err => {
-                return reject(
-                    Errormessage.restResponse({err})
-                );
-            });
-        })
+        });
     }
 }

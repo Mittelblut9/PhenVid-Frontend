@@ -1,13 +1,13 @@
 <template>
-    <PGVHeader :username="username" :email="email" :isLoggedIn="isLoggedIn"/>
+    <PGVHeader :username="username" :email="email" :isLoggedIn="isLoggedIn" />
 </template>
 
 <script>
-import PGVHeader from '../components/utils/Header-comp.vue'
+import PGVHeader from '../components/utils/Header-comp.vue';
 export default {
-    name: "PhenixVidHomepage",
+    name: 'PhenixVidHomepage',
     components: {
-        PGVHeader
+        PGVHeader,
     },
     probs: {
         username: {
@@ -21,11 +21,10 @@ export default {
         isLoggedIn: {
             type: Boolean,
             required: true,
-            default: true
-        }
+            default: true,
+        },
     },
-}
+};
 </script>
 
-<style>
-</style>
+<style></style>

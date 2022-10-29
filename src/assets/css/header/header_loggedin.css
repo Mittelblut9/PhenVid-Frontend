@@ -2,7 +2,6 @@
     margin: 0 5px 0 0;
 }
 
-
 .profile .name {
     text-align: center;
     transform: translateX(-30px);
@@ -16,7 +15,6 @@
     text-align: right;
     text-overflow: ellipsis;
 }
-
 
 .profile_loggedin .name,
 .profile_loggedin .email {

@@ -7,5 +7,4 @@
 import LoginCompVue from '../components/Login-comp.vue';
 </script>
 
-<style>
-</style>
+<style></style>

@@ -1,17 +1,17 @@
-import Auth from "../auth/AuthAPI";
+import Auth from '../auth/AuthAPI';
 import axios from 'axios';
 import config from '../../assets/config/config';
-import Errormessage from "../Error/Errormessage";
+import Errormessage from '../Error/Errormessage';
 
 class User extends Auth {
-    constructor () {
+    constructor() {
         super();
     }
     async get() {
         return await new Promise((resolve) => {
             const response = this.getUserByToken();
             return resolve(response);
-        })
+        });
     }
 
     async getUserByToken() {
@@ -20,12 +20,12 @@ class User extends Auth {
             const response = await axios.get(RESTcall, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.getToken()
-                }
+                    Authorization: 'Bearer ' + this.getToken(),
+                },
             });
-            return Errormessage.restResponse({response});
+            return Errormessage.restResponse({ response });
         } catch (err) {
-            return Errormessage.restResponse({err});
+            return Errormessage.restResponse({ err });
         }
     }
 }
