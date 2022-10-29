@@ -14,10 +14,10 @@ export default class Mantain {
             };
             const startedPing = new Date().getTime();
 
-            const response = Rest.get({
+            const response = new Rest({
                 url,
                 headers,
-            });
+            }).get();
 
             Promise.resolve(response)
                 .then(() => {

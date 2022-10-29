@@ -2,12 +2,17 @@ import axios from 'axios';
 import axiosRateLimit from 'axios-rate-limit';
 
 class Rest {
-    #backendURL;
-    #frontendURL;
-    #apiUrl;
-    #httpLimiter;
+    #backendURL = '';
+    #frontendURL = '';
+    #apiUrl = '';
+    #httpLimiter = '';
 
-    constructor() {
+    #url = '';
+    #headers = {};
+    #params = {};
+    #body = {};
+
+    constructor({ url, headers, params, body }) {
         this.#backendURL = `${import.meta.env.VITE_APP_PROTOCOL}${import.meta.env.VITE_APP_DOMAIN}${
             import.meta.env.PRODUCTION ? '' : ':' + import.meta.env.VITE_APP_PORT
         }`;
@@ -20,14 +25,28 @@ class Rest {
             perMilliseconds: 1000,
             maxRPS: 1,
         });
+
+        this.init({ url, headers, params, body });
     }
 
-    get({ url, headers, params }) {
+    init({ url, headers, params, body }) {
+        this.#url = url;
+        this.#headers = headers;
+        this.#params = params;
+        this.#body = body;
+    }
+
+    getRequestUrl() {
+        return this.#backendURL + this.#apiUrl + this.#url;
+    }
+
+    get() {
         return new Promise((resolve, reject) => {
             try {
-                const response = this.#httpLimiter.get(this.#backendURL + this.#apiUrl + url, {
-                    headers,
-                    params,
+                const response = this.#httpLimiter.get(this.getRequestUrl(), {
+                    headers: this.#headers,
+                    params: this.#params,
+                    body: this.#body,
                 });
                 return resolve(response);
             } catch (err) {
@@ -35,6 +54,37 @@ class Rest {
             }
         });
     }
+
+    post() {
+        return new Promise((resolve, reject) => {
+            try {
+                const response = this.#httpLimiter.post(this.getRequestUrl(), {
+                    headers: this.#headers,
+                    params: this.#params,
+                    body: this.#body,
+                });
+                return resolve(response);
+            } catch (err) {
+                return reject(err);
+            }
+        });
+    }
+
+    put() {
+        return new Promise((resolve, reject) => {
+            try {
+                const response = this.#httpLimiter.put(this.getRequestUrl(), {
+                    headers: this.#headers,
+                    params: this.#params,
+                    body: this.#body,
+                });
+                return resolve(response);
+            } catch (err) {
+                return reject(err);
+            }
+        });
+    }
+        
 }
 
-export default new Rest();
+export default Rest;

@@ -20,7 +20,7 @@ class User extends Auth {
             Authorization: `Bearer ${this.getToken()}`,
         };
 
-        const response = Rest.get({ url, headers });
+        const response = new Rest({ url, headers }).get();
 
         await Promise.resolve(response)
             .then((response) => {

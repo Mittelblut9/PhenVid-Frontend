@@ -1,10 +1,8 @@
 <template>
-    <Homepage :isLoggedIn="isLoggedIn" :username="username" :email="email" />
+    <RouterView :isLoggedIn="isLoggedIn" :username="username" :email="email" />
 </template>
 
 <script>
-import Homepage from './web/views/Homepage.vue';
-
 export default {
     name: 'PhenixVid',
     data: () => {
@@ -21,9 +19,6 @@ export default {
                 return false;
             }
         };
-    },
-    components: {
-        Homepage,
     },
 };
 </script>

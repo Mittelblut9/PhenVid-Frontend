@@ -2,7 +2,6 @@ import config from '../../assets/config/config';
 import { createRouter, createWebHistory } from 'vue-router';
 import app from '../../main';
 import Errormessage from '../../class/Error/Errormessage';
-import Mantain from '../../class/Maintain/Maintain';
 import UserAPI from '../../class/user/UserAPI';
 
 const routes = [];
@@ -17,16 +16,6 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-    const ping = await Promise.resolve(new Mantain().ping());
-    if (!ping) {
-        removeApp();
-        return Errormessage.show(
-            'Server request failed. Server is currently unavailable. Please try again later',
-            true
-        );
-    }
-    console.log('Ping resolved. ' + ping.ping + 'ms');
-
     const nextRoute = routes.find((route) => route.path == to.fullPath);
     const requireLogin = nextRoute.requireLogin;
 
@@ -66,10 +55,6 @@ router.beforeEach(async (to, from, next) => {
 
 function loadApp() {
     app.mount('#app');
-}
-
-function removeApp() {
-    app.unmount();
 }
 
 export default router;

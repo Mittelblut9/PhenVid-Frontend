@@ -1,4 +1,4 @@
-class Signin {
+class SignIn {
     constructor(data) {
         if (!data || typeof data !== 'object') {
             return {
@@ -13,10 +13,8 @@ class Signin {
 
     #validateCredentials() {
         if (
-            !this.data.user_id ||
-            !this.data.user_name ||
-            !this.data.profile_picture ||
-            !this.data.email
+            !this.data.email ||
+            !this.data.password 
         ) {
             return {
                 error: true,
@@ -40,4 +38,4 @@ class Signin {
     }
 }
 
-export default Signin;
+export default SignIn;
