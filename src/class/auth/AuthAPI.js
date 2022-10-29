@@ -1,5 +1,5 @@
-import axios from 'axios';
 import config from '../../assets/config/config';
+import axios from 'axios';
 
 class Auth {
     constructor() {
@@ -24,25 +24,7 @@ class Auth {
         }
     }
 
-    async getUserByToken() {
-        const RESTcall = config.backend_url + config.apiUrl + '/users/' + this.#token;
-        console.log(RESTcall)
-        try {
-            const res = await axios.get(RESTcall);
-            return {
-                err: false,
-                code: res.code,
-                data: res.data
-            };
-        } catch (err) {
-            return {
-                err: true,
-                fullError: err,
-                code: err.response.status,
-                message: err.message
-            };
-        }
-    }
+    
 
     async loginUser(data) {
         const RESTcall = config.backend_url + config.apiUrl + '/user/login';

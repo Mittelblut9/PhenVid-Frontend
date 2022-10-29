@@ -1,10 +1,10 @@
-export default class Errormessage {
-    errorDiv = null;
+class Errormessage {
+    errorDiv;
 
-    constructor(message, beforeLoad = false) {
+    constructor() {}
+
+    show(message, beforeLoad = false) {
         if(!message) return false;
-        this.message = message;
-        this.beforeLoad = beforeLoad || false;
         
         this.errorDiv = document.createElement('div');
         this.errorDiv.classList.add('errormessage');
@@ -25,4 +25,23 @@ export default class Errormessage {
         this.errorDiv.append(errorSpan);
         document.body.appendChild(this.errorDiv);
     }
+
+    restResponse({err = null, response = null}) {
+        if(err) {
+            return {
+                err: true,
+                fullError: err,
+                code: err.status,
+                message: err.message
+            }
+        }
+
+        return {
+            err: false,
+            code: response.code,
+            data: response.data
+        }
+    }
 }
+
+export default new Errormessage();

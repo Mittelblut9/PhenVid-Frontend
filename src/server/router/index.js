@@ -1,12 +1,13 @@
 import config from '../../assets/config/config';
-import UserApi from '../../class/user/UserAPI.js';
 import {
     createRouter,
     createWebHistory
 } from 'vue-router';
 import app from '../../main';
-import Errormessage from '../../class/Errormessage/Errormessage';
+import Errormessage from '../../class/Error/Errormessage';
 import Mantain from '../../class/Maintain/Maintain';
+import UserAPI from '../../class/user/UserAPI';
+
 
 const routes = []
 
@@ -20,21 +21,15 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-    const api = new UserApi();
-
     let ping = await Promise.resolve(new Mantain().ping());
     if(ping.err) {
         document.getElementById('app').remove();
-        return new Errormessage('Server request failed. Server is currently unavailable. Please try again later', true)
+        return Errormessage.show('Server request failed. Server is currently unavailable. Please try again later', true)
     }else {
         console.log('Ping resolved. ' + ping.ping + 'ms')
     }
 
-    //debug - Remove when getUser api call works
-    next();
-    return loadApp();
-
-    const user = api.getUser();
+    const user = UserAPI.get();
     const res = await Promise.resolve(user);
 
     const nextRoute = routes.find(route => route.path == to.fullPath);
@@ -54,7 +49,7 @@ router.beforeEach(async (to, from, next) => {
             return loadApp()
         }
     } else {
-        new Errormessage('Request to the server failed. '+res.message)
+        Errormessage.show('Request to the server failed. '+res.message)
 
         if(to.fullPath == config.routes.find(r => r.name == 'login').path) {
             next();

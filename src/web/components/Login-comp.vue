@@ -1,6 +1,6 @@
 <template>
     <h1>LOGIN</h1>
-    <div id="g_id_signin"></div>
+    
 </template>
 
 <script>
