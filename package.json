@@ -46,7 +46,7 @@
         "validator": "^13.7.0",
         "vue": "^3.2.40",
         "vue-hot-reload-api": "^2.3.4",
-        "vue-router": "^4.1.5"
+        "vue-router": "^4.1.6"
     },
     "devDependencies": {
         "@babel/core": "^7.19.3",
